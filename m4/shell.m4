@@ -61,7 +61,7 @@ AC_DEFUN([AC_PROG_SHELL],
         # shells, since less-"nice" shells in /bin and /usr/bin are
         # more likely to be installed than "nicer" shells elsewhere.
         ac_break_if_good_shell=:
-        as_save_IFS=$IFS; IFS=:
+        as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
         for as_dir in /bin /usr/bin $PATH
         do
           IFS=$as_save_IFS

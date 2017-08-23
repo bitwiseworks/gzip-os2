@@ -80,7 +80,9 @@
 #    define Z_SUFFIX "z"
 #    define casemap(c) tolow(c)
 #  endif
+#  ifndef STDC_HEADERS
 #  define STDC_HEADERS
+#  endif
 #  define UNLINK_READONLY_BUG
 #  include <io.h>
 #  define OS_CODE  0x06

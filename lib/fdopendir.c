@@ -37,8 +37,10 @@
 #  define REPLACE_FCHDIR 0
 # endif
 
+# ifndef __KLIBC__
 static DIR *fdopendir_with_dup (int, int, struct saved_cwd const *);
 static DIR *fd_clone_opendir (int, struct saved_cwd const *);
+#endif
 
 /* Replacement for POSIX fdopendir.
 
@@ -119,7 +121,6 @@ fdopendir (int fd)
 
   return dir;
 }
-# endif
 
 /* Like fdopendir, except that if OLDER_DUPFD is not -1, it is known
    to be a dup of FD which is less than FD - 1 and which will be
@@ -222,6 +223,7 @@ fd_clone_opendir (int fd, struct saved_cwd const *cwd)
         }
     }
 }
+# endif
 
 #else /* HAVE_FDOPENDIR */
 
