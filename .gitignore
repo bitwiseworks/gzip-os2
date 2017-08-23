@@ -17,3 +17,6 @@ doc/Makefile.in
 lib/Makefile.in
 lib/config.hin*
 tests/Makefile.in
+doc/gzip.info
+doc/stamp-vti
+doc/version.texi
