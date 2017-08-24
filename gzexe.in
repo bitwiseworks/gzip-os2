@@ -212,7 +212,11 @@ EOF
     echo >&2 "$0: $tmp: cannot chmod"
     continue
   }
-  ln -f "$file" "$file~" || {
+  case `uname -s` in
+  OS/2*) LN="cp" ;;
+  *) LN="ln" ;;
+  esac
+  $LN -f "$file" "$file~" || {
     res=$?
     echo >&2 "$0: cannot backup $i as $i~"
     continue
