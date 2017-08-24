@@ -1,6 +1,9 @@
 /*REXX*/
 parse arg args
-script = 'gunzip'
+parse source . . Source
+
+helperpath = FileSpec('d', Source) || FileSpec('p', Source)
+helper = translate(helperpath, '/', '\') || 'gunzip'
 args   = translate(args, '/', '\')
-if (args \== '') then script = script||' '||args
-'@sh -c '''script''''
+if (args \== '') then helper = helper||' '||args
+'@sh 'helper
