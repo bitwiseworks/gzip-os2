@@ -20,11 +20,11 @@
 
 . "${srcdir=.}/init.sh"; path_prepend_ ..
 
-echo a > a || framework_failure_
-echo b > b || framework_failure_
+printf "a\n" | tr -d "\r" > a || framework_failure_
+printf "b\n" | tr -d "\r" > b || framework_failure_
 gzip a b || framework_failure_
 
-cat <<EOF > exp
+cat <<EOF | tr -d "\r" > exp
 1c1
 < a
 ---

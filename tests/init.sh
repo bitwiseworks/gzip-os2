@@ -443,10 +443,15 @@ path_prepend_ ()
       /*) abs_path_dir_=$path_dir_;;
       *) abs_path_dir_=$initial_cwd_/$path_dir_;;
     esac
+    case `uname -s` in
+    OS/2*) PATH_SEPARATOR=";" ;;
+    *)
     case $abs_path_dir_ in
       *:*) fail_ "invalid path dir: '$abs_path_dir_'";;
     esac
-    PATH="$abs_path_dir_:$PATH"
+      PATH_SEPARATOR=":" ;;
+    esac
+    PATH="$abs_path_dir_$PATH_SEPARATOR$PATH"
 
     # Create an alias, FOO, for each FOO.exe in this directory.
     create_exe_shims_ "$abs_path_dir_" \

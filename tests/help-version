@@ -258,12 +258,24 @@ for i in $built_programs; do
   if type ${prog}_setup > /dev/null 2>&1; then
     ${prog}_setup
   fi
+  case $i in
+  gzexe*)
+  if eval "env \$i $args"; then
+    : # ok
+  else
+    echo FAIL: $i
+    fail=1
+  fi
+  ;;
+  *)
   if eval "env \$i $args < \$tmp_in > \$tmp_out"; then
     : # ok
   else
     echo FAIL: $i
     fail=1
   fi
+  ;;
+  esac
   rm -rf $tmp_in $tmp_in2 $tmp_out $tmp_dir
 done
 

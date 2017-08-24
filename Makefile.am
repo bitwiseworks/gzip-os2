@@ -104,7 +104,7 @@ gen-ChangeLog:
 	fi
 
 # Prepend "." to $PATH:
-new_path = PATH=.$(PATH_SEPARATOR)$$PATH
+new_path = PATH=".$(PATH_SEPARATOR)$$PATH"
 
 # A simple test, just of gzip -- more of a sanity check than anything else.
 FILES_TO_CHECK = $(bin_SCRIPTS) \

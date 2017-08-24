@@ -20,7 +20,7 @@
 
 . "${srcdir=.}/init.sh"; path_prepend_ ..
 
-printf 'needle\nn2\n' > n || framework_failure_
+printf 'needle\nn2\n' | tr -d "\r" > n || framework_failure_
 cp n haystack || framework_failure_
 gzip haystack || framework_failure_
 
